@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@600,500&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="style.css">
+   <title>Rad Shooter Game</title>
+</head>
+
+<body>
+
+   <div class="dashboard player-info">
+      <div class="timer">
+         <span id="minutes">02</span>:<span id="seconds">00</span>
+      </div>
+      <div class="dashboard__group">
+         <div class="record">
+            <p class="record__title">Record score</p>
+            <p class="record__data" id="score-record">0</p>
+         </div>
+         <div class="record">
+            <p class="record__title">Record stars</p>
+            <p class="record__data" id="stars-record">0</p>
+         </div>
+      </div>
+   </div>
+
+   <div class="canvas-container">
+      <canvas class="canvas" id="canvas" width="500" height="500"></canvas>
+      <div class="message-container">
+         <p class="game-over">You're dead<br>Reload to play again</p>
+         <button class="btn" id="start-btn">Start</button>
+      </div>
+   </div>
+
+   <div class="dashboard player-info">
+      <div class="score">
+         <p class="score__title">Score</p>
+         <p class="score__data" id="score">0</p>
+      </div>
+      <div class="dashboard__group">
+         <div class="lives">
+            <p class="lives__title">❤️</p>
+            <p class="lives__data" id="lives">3</p>
+         </div>
+         <div class="stars">
+            <p class="stars__title">⭐</p>
+            <p class="stars__data" id="stars">0</p>
+         </div>
+      </div>
+   </div>
+
+</body>
+
+</html>

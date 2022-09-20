@@ -1,0 +1,144 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Clash Grotesk", Arial;
+}
+
+body {
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   color: #161616;
+   gap: 15px;
+}
+
+.canvas-container {
+   position: relative;
+}
+
+.canvas {
+   background-color: #87cefa;
+}
+
+.game-over {
+   font-size: 1.6rem;
+   font-weight: 500;
+   text-align: center;
+   margin-block-end: 15px;
+   display: none;
+}
+
+.message-container {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.btn {
+   padding: 10px 25px;
+   font-weight: 500;
+   font-size: 2rem;
+   border-radius: 4px;
+   border: 3.5px solid #161616;
+   cursor: pointer;
+   background-color: white;
+   margin-inline: auto;
+}
+
+.dashboard {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.dashboard:first-child .dashboard__group {
+   gap: 25px;
+}
+
+.timer {
+   font-size: 2rem;
+}
+
+.dashboard__group {
+   display: flex;
+   gap: 5px;
+}
+
+.record {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.record__title {
+   font-size: 1.1rem;
+   font-weight: 500;
+   background-color: rgb(255, 227, 18);
+}
+
+.record__data {
+   font-size: 1.4rem;
+   font-weight: 600;
+}
+
+.score {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 15px;
+}
+
+.score__title {
+   font-size: 1.5rem;
+   font-weight: 600;
+   background-color: rgb(255, 227, 18);
+}
+
+.score__data {
+   font-size: 2.2rem;
+   font-weight: 500;
+}
+
+.lives,
+.stars {
+   display: flex;
+   align-items: center;
+   gap: 3px;
+}
+
+.lives__title,
+.stars__title {
+   font-size: 1.7rem;
+   font-weight: 500;
+}
+
+.lives__data,
+.stars__data {
+   font-size: 1.6rem;
+   margin-block-end: -5px;
+}
+
+@media all and (max-width: 615px) {
+   html {
+      font-size: 95%;
+   }
+   body {
+      gap: 25px;
+   }
+   .dashboard {
+      padding-inline: 30px;
+   }
+   .dashboard:first-child {
+      flex-direction: column;
+      gap: 15px;
+   }
+   .timer {
+      font-size: 2.5rem;
+   }
+}
