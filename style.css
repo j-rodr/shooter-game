@@ -141,6 +141,9 @@ body {
    html {
       font-size: 95%;
    }
+   body {
+      gap: 25px;
+   }
    .dashboard {
       padding-inline: 30px;
    }
