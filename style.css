@@ -64,6 +64,20 @@ body {
    border: 2px solid #161616;
 }
 
+.shoot-btn {
+   position: absolute;
+   left: calc(95% - 80px);
+   top: calc(95% - 40px);
+   width: 80px;
+   height: 35px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 1.3rem;
+   border: 2px solid #161616;
+   border-radius: 3px;
+}
+
 .dashboard {
    display: flex;
    justify-content: space-between;

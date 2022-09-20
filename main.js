@@ -16,9 +16,12 @@ const starsRecordElement = document.getElementById("stars-record")
 const minutes = document.getElementById("minutes")
 const seconds = document.getElementById("seconds")
 const guideBtn = document.getElementById("guide-btn")
+const shootBtn = document.getElementById("shoot-btn")
+
+shootBtn.style.display = "none"
 
 guideBtn.addEventListener("click", () => {
-   alert("GOAL:\nGet the highest score in 2 minutes.\n\nINSTRUCTIONS:\nMove with your keyboard keys or holding and moving your mouse.\nYou lose a life when getting hit by an alien missile.\nShoot missiles pressing the spacebar.\nYou lose the game when dying or by colliding with an alien.\nYou get 10 points on each alien kill.\nYou lose 5 points every time you don't kill an alien.")
+   alert("GOAL:\nGet the highest score in 2 minutes.\n\nINSTRUCTIONS:\nMove with your keyboard keys or holding and moving your mouse.\nYou lose a life when getting hit by an alien missile.\nShoot missiles pressing the spacebar or the shoot button.\nYou lose the game when dying or by colliding with an alien.\nYou get 10 points on each alien kill.\nYou lose 5 points every time you don't kill an alien.")
 })
 
 if (!localStorage.getItem("score-record") && !localStorage.getItem("stars-record")) {
@@ -344,6 +347,7 @@ startBtn.addEventListener("click", function () {
    runGame = true
 
    this.style.display = "none"
+   shootBtn.style.display = "flex"
 
    timerInterval = setInterval(() => {
 
@@ -443,7 +447,8 @@ const pressedKeys = {
    DOWN: false,
    LEFT: false,
    RIGHT: false,
-   SPACE: false
+   SPACE: false,
+   SHOOT_BTN: false
 }
 
 // Add new enemy every second
@@ -513,6 +518,9 @@ function gameLoop() {
 
       // If spacebar was pressed, shoot last missile
       if (pressedKeys.SPACE) player.shoot(PLAYER_MISSILES[PLAYER_MISSILES.length - 1])
+
+      // If shoot button was pressed, shoot last missile
+      if (pressedKeys.SHOOT_BTN) player.shoot(PLAYER_MISSILES[PLAYER_MISSILES.length - 1])
 
       // Draw player on each iteration
       player.render()
@@ -734,5 +742,19 @@ canvas.addEventListener("touchmove", (e) => {
 
       if (playerIsWithinXLimits && playerIsWithinYLimits) player.moveTo({ x: newXPosition, y: newYPosition })
    }
+
+})
+
+// Shoot button for touch screens
+shootBtn.addEventListener("click", () => {
+
+   // Add new missile
+   PLAYER_MISSILES.push(new Missile())
+
+   // Set key to true
+   pressedKeys.SHOOT_BTN = true
+
+   // Give gameLoop() a few millisenconds to shoot the missile, then set key to false
+   setTimeout(() => pressedKeys.SHOOT_BTN = false, 50)
 
 })
