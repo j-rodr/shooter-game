@@ -625,3 +625,78 @@ function gameLoop() {
    }
 
 }
+
+/* 4. Events for player movement */
+
+// Move player with keyboard
+document.addEventListener("keydown", ({ key, code }) => {
+
+   if (key === "ArrowUp") pressedKeys.UP = true
+
+   if (key === "ArrowDown") pressedKeys.DOWN = true
+
+   if (key === "ArrowLeft") pressedKeys.LEFT = true
+
+   if (key === "ArrowRight") pressedKeys.RIGHT = true
+
+   if (code === "Space") pressedKeys.SPACE = true
+
+})
+
+// Stop player movement when they release either of the movement keys
+document.addEventListener("keyup", ({ key, code }) => {
+
+   if (key === "ArrowUp") pressedKeys.UP = false
+
+   if (key === "ArrowDown") pressedKeys.DOWN = false
+
+   if (key === "ArrowLeft") pressedKeys.LEFT = false
+
+   if (key === "ArrowRight") pressedKeys.RIGHT = false
+
+   if (code === "Space") {
+      // Add new missile when releasing the spacebar
+      PLAYER_MISSILES.push(new Missile())
+
+      pressedKeys.SPACE = false
+   }
+
+})
+
+// Move player with mouse
+let mouseIsDown = false
+
+canvas.addEventListener("mousedown", () => mouseIsDown = true)
+
+canvas.addEventListener("mouseup", () => mouseIsDown = false)
+
+canvas.addEventListener("mousemove", (e) => {
+
+   let canvas = document.getElementById("canvas")
+   let offset = canvas.getBoundingClientRect()
+
+   if (mouseIsDown) {
+
+      const canvasPosition = {
+         x: offset.left,
+         y: offset.top
+      }
+
+      let pointerPositionFromDocument = {
+         x: e.clientX,
+         y: e.clientY
+      }
+
+      console.log(canvasPosition, pointerPositionFromDocument)
+
+      // Subtract canvas position in relation to document and pointer position in relation to document to get pointer position in relation to canvas
+      newXPosition = pointerPositionFromDocument.x - canvasPosition.x
+      newYPosition = pointerPositionFromDocument.y - canvasPosition.y
+
+      const playerIsWithinYLimits = newYPosition > 0 && newYPosition < (canvas.height - player.image.height)
+      const playerIsWithinXLimits = newXPosition > 0 && newXPosition < (canvas.width - player.image.width)
+
+      if (playerIsWithinXLimits && playerIsWithinYLimits) player.moveTo({ x: newXPosition, y: newYPosition })
+   }
+
+})
