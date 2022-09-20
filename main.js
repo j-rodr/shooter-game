@@ -15,6 +15,11 @@ const scoreRecordElement = document.getElementById("score-record")
 const starsRecordElement = document.getElementById("stars-record")
 const minutes = document.getElementById("minutes")
 const seconds = document.getElementById("seconds")
+const guideBtn = document.getElementById("guide-btn")
+
+guideBtn.addEventListener("click", () => {
+   alert("The goal is to get the highest score in 2 minutes.\nMove with your keyboard keys or holding and moving your mouse.\nYou lose a life when getting hit by an alien missile.\nYou lose the game if you lose all your lives or by colliding with an alien.\nYou get 10 points by killing aliens.\nYou lose 5 points every time you don't kill an alien.")
+})
 
 if (!localStorage.getItem("score-record") && !localStorage.getItem("stars-record")) {
 
@@ -348,7 +353,7 @@ startBtn.addEventListener("click", function () {
 
          if (+seconds.innerText === 0 && +minutes.innerText === 0) {
             lostGame = true
-            document.getElementById("lost-title").innerHTML = "Time's up!<br>Reload to play again"
+            // lostMessageElement.innerHTML = "Time's up!<br>Reload to play again"
             return;
          }
       }
@@ -686,8 +691,6 @@ canvas.addEventListener("mousemove", (e) => {
          x: e.clientX,
          y: e.clientY
       }
-
-      console.log(canvasPosition, pointerPositionFromDocument)
 
       // Subtract canvas position in relation to document and pointer position in relation to document to get pointer position in relation to canvas
       newXPosition = pointerPositionFromDocument.x - canvasPosition.x
