@@ -18,7 +18,7 @@ const seconds = document.getElementById("seconds")
 const guideBtn = document.getElementById("guide-btn")
 
 guideBtn.addEventListener("click", () => {
-   alert("The goal is to get the highest score in 2 minutes.\nMove with your keyboard keys or holding and moving your mouse.\nYou lose a life when getting hit by an alien missile.\nYou lose the game if you lose all your lives or by colliding with an alien.\nYou get 10 points by killing aliens.\nYou lose 5 points every time you don't kill an alien.")
+   alert("GOAL:\nGet the highest score in 2 minutes.\n\nINSTRUCTIONS:\nMove with your keyboard keys or holding and moving your mouse.\nYou lose a life when getting hit by an alien missile.\nShoot missiles pressing the spacebar.\nYou lose the game when dying or by colliding with an alien.\nYou get 10 points on each alien kill.\nYou lose 5 points every time you don't kill an alien.")
 })
 
 if (!localStorage.getItem("score-record") && !localStorage.getItem("stars-record")) {
