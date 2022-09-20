@@ -499,6 +499,7 @@ function finishGame(animationFrame) {
    scoreElement.innerText = "0"
 
    lostMessageElement.style.display = "block"
+   shootBtn.style.display = "none"
 }
 
 // Game loop
