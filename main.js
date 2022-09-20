@@ -217,7 +217,7 @@ class Enemy extends GameImage {
       })
 
       this.MISSILES = [new Missile("enemy")]
-      this.velocity = 3.5
+      this.velocity = 3.8
 
       // Add missile every 2.5 seconds
       setInterval(() => {
@@ -331,7 +331,7 @@ class Heart extends GameImage {
          ctx.imageSmoothingEnabled = false
 
          // Move star down every time it is rendered
-         ctx.drawImage(this.image, this.position.x, this.position.y += 2.5)
+         ctx.drawImage(this.image, this.position.x, this.position.y += 2.7)
       }
 
    }
@@ -446,26 +446,26 @@ const pressedKeys = {
    SPACE: false
 }
 
-// Add new enemy every 1.5 seconds
+// Add new enemy every second
 setInterval(() => {
 
    if (runGame) ENEMIES.push(new Enemy())
 
-}, 1500)
+}, 1000)
 
-// Add new enemy star 3.5 seconds
+// Add new star every 3.5 seconds
 setInterval(() => {
 
    if (runGame) STARS.push(new Star())
 
 }, 3500)
 
-// Add new heart every 4 seconds
+// Add new heart every 5 seconds
 setInterval(() => {
 
    if (runGame) HEARTS.push(new Heart())
 
-}, 4000)
+}, 5000)
 
 // End game
 function finishGame(animationFrame) {
