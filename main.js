@@ -353,7 +353,7 @@ startBtn.addEventListener("click", function () {
 
          if (+seconds.innerText === 0 && +minutes.innerText === 0) {
             lostGame = true
-            // lostMessageElement.innerHTML = "Time's up!<br>Reload to play again"
+            lostMessageElement.innerHTML = "Time's up!<br>Reload to play again"
             return;
          }
       }
