@@ -703,3 +703,36 @@ canvas.addEventListener("mousemove", (e) => {
    }
 
 })
+
+// Move player for touch screens
+let touchIsDown = false
+
+canvas.addEventListener("touchstart", () => touchIsDown = true)
+
+canvas.addEventListener("touchend", () => touchIsDown = false)
+
+canvas.addEventListener("touchmove", (e) => {
+
+   if (touchIsDown) {
+      let offset = canvas.getBoundingClientRect()
+
+      const canvasPosition = {
+         x: offset.left,
+         y: offset.top
+      }
+
+      let touchPosition = {
+         x: e.touches[0].clientX,
+         y: e.touches[0].clientY
+      }
+
+      newXPosition = touchPosition.x - canvasPosition.x
+      newYPosition = touchPosition.y - canvasPosition.y
+
+      const playerIsWithinYLimits = newYPosition > 0 && newYPosition < (canvas.height - player.image.height)
+      const playerIsWithinXLimits = newXPosition > 0 && newXPosition < (canvas.width - player.image.width)
+
+      if (playerIsWithinXLimits && playerIsWithinYLimits) player.moveTo({ x: newXPosition, y: newYPosition })
+   }
+
+})
