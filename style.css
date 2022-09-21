@@ -228,5 +228,6 @@ button {
    }
    .guide-btn {
       order: 3;
+      margin-block-end: 20px;
    }
 }
