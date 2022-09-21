@@ -30,30 +30,45 @@
 
    <div class="canvas-container">
       <canvas class="canvas" id="canvas" width="500" height="500"></canvas>
-      <button class="shoot-btn" id="shoot-btn">Shoot</button>
       <div class="message-container">
          <p class="game-over" id="game-over">You're dead<br>Reload to play again</p>
          <button class="btn" id="start-btn">Start</button>
       </div>
    </div>
 
-   <div class="dashboard player-info">
-      <div class="score">
-         <p class="score__title">Score</p>
-         <p class="score__data" id="score">0</p>
+
+   <div class="game-controls">
+      <div class="game-controls__movement">
+         <button class="button-left movement-btn" data-direction="LEFT">⬅️</button>
+         <button class="button-down movement-btn" data-direction="DOWN">⬇️</button>
+         <button class="button-right movement-btn" data-direction="RIGHT">➡️</button>
+         <button class="button-up movement-btn" data-direction="UP">⬆️</button>
       </div>
-      <button class="guide-btn" id="guide-btn">How to play</button>
-      <div class="dashboard__group">
-         <div class="lives">
-            <p class="lives__title">❤️</p>
-            <p class="lives__data" id="lives">3</p>
-         </div>
-         <div class="stars">
-            <p class="stars__title">⭐</p>
-            <p class="stars__data" id="stars">0</p>
-         </div>
-      </div>
+      <button class="shoot-btn" id="shoot-btn">Shoot</button>
    </div>
+
+   <div class="dashboard player-info">
+      <div class="dashboard__left">
+         <div class="score">
+            <p class="score__title">Score</p>
+            <p class="score__data" id="score">0</p>
+         </div>
+         <div class="dashboard__group">
+            <div class="lives">
+               <p class="lives__title">❤️</p>
+               <p class="lives__data" id="lives">3</p>
+            </div>
+            <div class="stars">
+               <p class="stars__title">⭐</p>
+               <p class="stars__data" id="stars">0</p>
+            </div>
+         </div>
+      </div>
+
+      <button class="guide-btn" id="guide-btn">How to play</button>
+
+   </div>
+
 
    <script src="main.js"></script>
 

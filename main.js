@@ -17,11 +17,10 @@ const minutes = document.getElementById("minutes")
 const seconds = document.getElementById("seconds")
 const guideBtn = document.getElementById("guide-btn")
 const shootBtn = document.getElementById("shoot-btn")
-
-shootBtn.style.display = "none"
+const movementBtns = document.querySelectorAll(".movement-btn")
 
 guideBtn.addEventListener("click", () => {
-   alert("GOAL:\nGet the highest score in 2 minutes.\n\nINSTRUCTIONS:\nMove with your keyboard keys or holding and moving your mouse.\nYou lose a life when getting hit by an alien missile.\nShoot missiles pressing the spacebar or the shoot button.\nYou lose the game when dying or by colliding with an alien.\nYou get 10 points on each alien kill.\nYou lose 5 points every time you don't kill an alien.")
+   alert("GOAL:\nGet the highest score in 2 minutes.\n\nINSTRUCTIONS:\nMove with your keyboard keys or holding and moving your mouse.\nIf using a mobile device, move and shoot buttons will appear.\nYou lose a life when getting hit by an alien missile.\nShoot missiles pressing the spacebar or the shoot button.\nYou lose the game when dying or by colliding with an alien.\nYou get 10 points on each alien kill.\nYou lose 5 points every time you don't kill an alien.")
 })
 
 if (!localStorage.getItem("score-record") && !localStorage.getItem("stars-record")) {
@@ -347,7 +346,6 @@ startBtn.addEventListener("click", function () {
    runGame = true
 
    this.style.display = "none"
-   shootBtn.style.display = "flex"
 
    timerInterval = setInterval(() => {
 
@@ -499,7 +497,6 @@ function finishGame(animationFrame) {
    scoreElement.innerText = "0"
 
    lostMessageElement.style.display = "block"
-   shootBtn.style.display = "none"
 }
 
 // Game loop
@@ -714,35 +711,11 @@ canvas.addEventListener("mousemove", (e) => {
 })
 
 // Move player for touch screens
-let touchIsDown = false
+movementBtns.forEach(function (button) {
 
-canvas.addEventListener("touchstart", () => touchIsDown = true)
+   button.addEventListener("touchstart", function () { pressedKeys[this.dataset.direction] = true })
 
-canvas.addEventListener("touchend", () => touchIsDown = false)
-
-canvas.addEventListener("touchmove", (e) => {
-
-   if (touchIsDown) {
-      let offset = canvas.getBoundingClientRect()
-
-      const canvasPosition = {
-         x: offset.left,
-         y: offset.top
-      }
-
-      let touchPosition = {
-         x: e.touches[0].clientX,
-         y: e.touches[0].clientY
-      }
-
-      newXPosition = touchPosition.x - canvasPosition.x
-      newYPosition = touchPosition.y - canvasPosition.y
-
-      const playerIsWithinYLimits = newYPosition > 0 && newYPosition < (canvas.height - player.image.height)
-      const playerIsWithinXLimits = newXPosition > 0 && newXPosition < (canvas.width - player.image.width)
-
-      if (playerIsWithinXLimits && playerIsWithinYLimits) player.moveTo({ x: newXPosition, y: newYPosition })
-   }
+   button.addEventListener("touchend", function () { pressedKeys[this.dataset.direction] = false })
 
 })
 

@@ -13,6 +13,12 @@ body {
    justify-content: center;
    color: #161616;
    gap: 15px;
+   overflow-x: hidden;
+}
+
+button {
+   cursor: pointer;
+   background-color: white;
 }
 
 .canvas-container {
@@ -46,8 +52,6 @@ body {
    font-size: 2rem;
    border-radius: 4px;
    border: 3.5px solid #161616;
-   cursor: pointer;
-   background-color: white;
    margin-inline: auto;
 }
 
@@ -65,11 +69,6 @@ body {
 }
 
 .shoot-btn {
-   position: absolute;
-   left: calc(95% - 80px);
-   top: calc(95% - 40px);
-   width: 80px;
-   height: 35px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -90,6 +89,16 @@ body {
 
 .dashboard:first-child .dashboard__group {
    gap: 25px;
+}
+
+.dashboard:last-child > div {
+   display: flex;
+}
+
+.dashboard__left {
+   display: flex;
+   align-items: center;
+   gap: 20px;
 }
 
 .timer {
@@ -155,6 +164,44 @@ body {
    margin-block-end: -5px;
 }
 
+.game-controls {
+   display: none;
+}
+
+@media all and (max-width: 800px) {
+   .game-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding-block: 20px;
+      gap: 40px;
+   }
+   .game-controls__movement {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr 1fr;
+      gap: 15px;
+   }
+   .game-controls button {
+      padding: 10px;
+      border: 2px solid #161616;
+      border-radius: 2px;
+   }
+   .button-up {
+      grid-area: 1 / 2;
+   }
+   .button-down {
+      grid-area: 2 / 2;
+   }
+   .button-left {
+      grid-area: 2 / 1;
+   }
+   .button-right {
+      grid-area: 2 / 3;
+   }
+}
+
 @media all and (max-width: 615px) {
    html {
       font-size: 95%;
@@ -175,7 +222,7 @@ body {
 }
 
 @media all and (max-width: 450px) {
-   .canvas-container + .dashboard {
+   .game-controls + .dashboard {
       flex-direction: column;
       gap: 20px;
    }
