@@ -1,6 +1,8 @@
 # **3. Shooter Game**
 For my third portfolio project I decided to create a shooter game with vanilla JavaScript. I intended to practice my knowledge about objects, arrays, higher-order functions, OOP, event handlers, `localStorage`, and `requestAnimationFrame`. 
 
+[Go to project →](https://j-rodr.github.io/shooter-game/)
+
 ## **Gameplay**
 **The goal of the game is to get the highest score possible in 2 minutes.**
 - Move with your keyboard keys or holding and moving your mouse.
